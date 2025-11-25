@@ -1,4 +1,4 @@
-# ToDo-Liste als Webapplikation mit Fullstack (Node.js, React, MongoDB, JWT)
+# Fullstack Entwicklung einer ToDo-Liste als Webapplikation
 
 Eine vollständige, moderne Fullstack-Webapplikation zur Verwaltung persönlicher ToDos mit Benutzerkonten, Deadlines, Kategorien, Sortierung und Pagination.
 
@@ -47,11 +47,11 @@ Die Anwendung unterstützt Registrierung, Login, persönliche Aufgabenverwaltung
 
 ### Frontend
 
-* React 18
+* React
 * Vite
 * Tailwind CSS
 * Axios
-* JWT-Handling im Browser
+* JWT
 
 ### Backend
 
