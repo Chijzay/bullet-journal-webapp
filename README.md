@@ -185,7 +185,8 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
     - `VITE_AUTH_API_URL`
 
 * CI/CD:
-  - Jedes GitHub-Push löst auto-Deploy auf Render und Netlify aus Zero-Downtime Deployments
+  - Jedes GitHub-Push löst auto-Deploy auf Render und Netlify aus
+  - Zero-Downtime Deployments
   - Keine lokale Umgebung für Betrieb notwendig und zu 100% Cloud
 
 
