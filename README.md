@@ -1,8 +1,6 @@
 <p align="center">
-  <img src="./logo.svg" width="300" />
+  <img src="./logo.svg" width="250" />
 </p>
-
-
 
 # Fullstack Webentwicklung einer ToDo-Liste
 
