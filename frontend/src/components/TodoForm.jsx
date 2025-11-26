@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const PRESET_CATEGORIES = ['Arbeit', 'Privat', 'Haushalt', 'Gesundheit', 'Studium'];
+const PRESET_CATEGORIES = ['Arbeit', 'Haushalt', 'Einkaufen', 'Erledigung'];
 
 const getTodayString = () => new Date().toISOString().slice(0, 10);
 
@@ -92,7 +92,7 @@ function TodoForm({ onAdd }) {
           <span className="mb-1 font-medium">oder eigene Kategorie:</span>
           <input
             className="rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 text-xs text-slate-900 dark:text-slate-100 outline-none focus:ring-2 focus:ring-blue-500/70"
-            placeholder="z. B. Lifelab"
+            placeholder="z. B. Privat"
             value={categoryCustom}
             onChange={(e) => setCategoryCustom(e.target.value)}
           />
