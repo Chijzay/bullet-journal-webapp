@@ -181,17 +181,20 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
 
 ## Deployment und Hosting
 
-* Backend (API):
+*Render (Backend):
   - Hosted auf Render.com
+  - Node Server über `npm start`
+  - Health Checks
   - Automatisches Deployment bei jedem GitHub-Push
   - Environment Variables:
     - `MONGODB_URI`
     - `JWT_SECRET`
     - `PORT`
 
-* Frontend:
+* Netlify (Frontend):
   - Hosted auf Netlify
-  - Build-Prozess mit Vite (npm run build)
+  - Build-Prozess mit Vite über `npm run build`
+  - Deploy der `dist/`-Dateien
   - Environment Variables:
     - `VITE_API_URL`
     - `VITE_AUTH_API_URL`
