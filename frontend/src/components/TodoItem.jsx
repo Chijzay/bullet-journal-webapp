@@ -8,6 +8,34 @@ function formatDate(dateStr) {
 
 const getTodayString = () => new Date().toISOString().slice(0, 10);
 
+// Farbklassen für Kategorien
+const CATEGORY_COLORS = [
+  'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/40 dark:text-blue-200 dark:border-blue-700',
+  'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/40 dark:text-green-200 dark:border-green-700',
+  'bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/40 dark:text-purple-200 dark:border-purple-700',
+  'bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/40 dark:text-amber-200 dark:border-amber-700',
+  'bg-pink-100 text-pink-800 border-pink-200 dark:bg-pink-900/40 dark:text-pink-200 dark:border-pink-700',
+  'bg-teal-100 text-teal-800 border-teal-200 dark:bg-teal-900/40 dark:text-teal-200 dark:border-teal-700',
+];
+
+function getCategoryColorClass(category) {
+  const base =
+    'inline-flex items-center px-2 py-0.5 rounded-full border text-[0.7rem] font-medium';
+  if (!category) {
+    return (
+      base +
+      ' bg-slate-100 text-slate-800 border-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-500'
+    );
+  }
+  const key = category.toLowerCase();
+  let hash = 0;
+  for (let i = 0; i < key.length; i++) {
+    hash = (hash + key.charCodeAt(i)) % 1000;
+  }
+  const idx = hash % CATEGORY_COLORS.length;
+  return base + ' ' + CATEGORY_COLORS[idx];
+}
+
 function TodoItem({ todo, onDelete, onToggle, onUpdate }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
@@ -47,8 +75,12 @@ function TodoItem({ todo, onDelete, onToggle, onUpdate }) {
 
   const today = getTodayString();
 
+  const containerBase =
+    'flex flex-col gap-1 bg-slate-50 dark:bg-slate-700 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-600 transition-opacity';
+  const containerDone = todo.done ? 'opacity-60' : '';
+
   return (
-    <li className="flex flex-col gap-1 bg-slate-50 dark:bg-slate-700 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-600">
+    <li className={`${containerBase} ${containerDone}`}>
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 flex-1">
           <input
@@ -152,7 +184,9 @@ function TodoItem({ todo, onDelete, onToggle, onUpdate }) {
               onKeyDown={handleKeyDown}
             />
           ) : (
-            (todo.category && todo.category.trim()) || '-'
+            <span className={getCategoryColorClass(todo.category)}>
+              {(todo.category && todo.category.trim()) || '–'}
+            </span>
           )}
         </div>
       </div>
