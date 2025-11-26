@@ -106,7 +106,7 @@ https://todo-liste-webapp.netlify.app/
 
 ## Architekturübersicht
 
-Die Anwendung folgt einer klassischen und vollständige Fullstack Client-Server-Architektur.
+Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Server-Architektur`.
 
 ```text
 ┌──────────────────────────┐
