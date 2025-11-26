@@ -15,8 +15,7 @@ Die Webapplikation ist unter folgendem Link erreichbar:
 https://todo-liste-webapp.netlify.app/
 ```
 
-**Hinweis:** Der erste Aufruf kann einige Sekunden dauern, da Render das Backend zunächst _aufweckt_.
-
+_Hinweis:_ Das Backend (Render) benötigt nach längerer Inaktivität einige Sekunden zum \flqq{}Aufwachen.
 
 ## Funktionen
 
