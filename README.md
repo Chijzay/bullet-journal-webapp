@@ -101,7 +101,7 @@ https://todo-liste-webapp.netlify.app/
 * MongoDB Atlas
 *	Mongoose ODM
     - `User`: Benutzername, E-Mail, Passwort (gehasht)
-    - `Todo`: Text, Status, Kategorie, Deadline, User-Referenz)
+    - `Todo`: Text, Status, Kategorie, Deadline, User-Referenz
 
 
 ## Architekturübersicht
