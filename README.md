@@ -51,7 +51,7 @@ Eine vollständige, moderne Fullstack-Webapplikation zur Verwaltung persönliche
 
 * Node.js + Express
 * MongoDB + Mongoose
-* JSON Web Tokens (jsonwebtoken)
+* JWT
 * bcryptjs
 * dotenv
 * cors
@@ -89,34 +89,30 @@ Die Anwendung ist eine vollständige **Fullstack Client-Server-Webapplikation**.
 ```text
 .
 ├── backend/
-│   ├── server.js
-│   ├── package.json
-│   ├── .env
-│   ├── config/
 │   ├── middleware/
 │   ├── models/
-│   └── routes/
+│   ├── routes/
+│   ├── .env
+│   ├── package.json
+│   └── server.js
 │
 └── frontend/
+│   ├── src/
 │   ├── index.html
 │   ├── package.json
 │   ├── vite.config.js
 │   ├── tailwind.config.js
-│   ├── postcss.config.js
-\   └── src/
+\   └── postcss.config.js
 ```
 
+## Nutzung
 
-## Deployment
+Die Webapplikation ist unter dem nachfolgenden Link abrufbar:
 
-### Backend auf Render
+```
+https://todo-liste-webapp.netlify.app/
+```
 
-...
-
-### Frontend auf Netlify oder Vercel
-
-...
-
-## Hinweis
+### Hinweis
 
 Der Ladevorgang benötigt beim Starten der Webapplikation etwas Zeit.
