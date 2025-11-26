@@ -2,39 +2,58 @@
   <img src="./logo.svg" width="250" />
 </p>
 
-# Fullstack Webentwicklung einer ToDo-Liste
+# Fullstack Webentwicklung einer ToDo-Liste als Webapplikation
 
-Eine vollständige, moderne Fullstack-Webapplikation zur Verwaltung persönlicher ToDos mit Benutzerkonten, Deadlines, Kategorien, Sortierung und Pagination. Die Anwendung unterstützt Registrierung, Login, persönliche Aufgabenverwaltung und bietet eine klare, responsive Oberfläche.
+Eine moderne, vollständige Fullstack-Webapplikation zur Verwaltung persönlicher Aufgaben. Das System umfasst Benutzerkonten, Deadlines, Kategorien, Filter- und Sortierfunktionen, Pagination, sowie Light-/Dark-Mode. Alle Daten werden benutzerspezifisch gespeichert und sind jederzeit online abrufbar und bietet eine klare, responsive Oberfläche.
 
 ## Funktionen
 
 ### Benutzerverwaltung
 
-* Registrierung und Login über JWT-Authentifizierung
-* Passwörter werden sicher gehasht (bcrypt)
+* Registrierung und Login über `JWT`-Authentifizierung
+* Sicheres Passwort-Hashing mit `bcrypt`
 * Benutzername wird bei Registrierung vergeben und im UI angezeigt
-* Jeder Benutzer sieht nur seine eigenen ToDos
+* Jeder Benutzer sieht ausschließlich seine eigenen Aufgabe
+* Authentifizierung wird clientseitig persistent gespeichert (LocalStorage)
 
-### ToDo-Funktionen
+### ToDo-Management (CRUD)
 
-* Aufgaben erstellen, anzeigen, bearbeiten und löschen (CRUD)
-* Inline-Editing: Text, Deadline und Kategorie sind direkt änderbar
+* Aufgaben erstellen, anzeigen, bearbeiten und löschen
+* Inline-Bearbeitung von:
+  - Text
+  - Deadline
+  - Kategorie
 * Speichern per Button oder `Enter`, Abbrechen per `Esc`
-* Pflicht-Deadline (Standard = aktueller Tag)
-* Keine Deadlines in der Vergangenheit
-* Kategorien: Vorauswahl oder eigene Kategorie definieren
+* Pflicht-Deadline (Standard = aktuelles Datum)
+* Deadlines können nicht in der Vergangenheit liegen
+* Kategorien frei wählbar oder vordefiniert
 
-### Filtern und Sortieren
+### Filtern, Sortieren und Kategorien
 
-* Filter: Alle, Offen, Erledigt, Heute, Diese Woche
-* Sortierung:
+* Filteroptionen:
+  - Offen
+  - Heute
+  - Diese Woche
+  - Erledigt
+  - Alle
 
-  * Erstellungsdatum (neu → alt oder alt → neu)
-  * Deadline (früh → spät oder spät → früh)
-  * Status (offen → erledigt)
-  * Text (A → Z oder Z → A)
-  * Kategorie (A → Z)
+* Sortieroptionen:
+  - Erstellungsdatum (↑/↓)
+  - Deadline (früh/spät)
+  - Status
+  - Text (A–Z / Z–A)
+  - Kategorie (A–Z)
 
+* Kategorie-Filter:
+  - Dynamische Liste aller vorhandenen Kategorien
+  - Auch benutzerdefinierte Kategorien werden erkannt
+  - Jede Kategorie mit eigener Farb-Badge (automatisch generiert)
+
+
+
+
+
+---
 ### Pagination und UX
 
 * Maximal 8 Aufgaben pro Seite
