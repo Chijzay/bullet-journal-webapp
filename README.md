@@ -78,11 +78,11 @@ Die Anwendung ist eine vollständige **Fullstack Client-Server-Webapplikation**.
            |  Mongoose
            v
 [ Datenbank (MongoDB / Atlas) ]
+```
 
 * **Client-Schicht:** React SPA, kommuniziert per JSON mit dem Backend
 * **Backend-Schicht:** Express API, Authentifizierung, Business-Logik
 * **Datenhaltung:** MongoDB via Mongoose
-```
 
 ## Projektstruktur
 
