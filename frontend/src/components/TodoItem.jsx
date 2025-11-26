@@ -81,13 +81,14 @@ function TodoItem({ todo, onDelete, onToggle, onUpdate }) {
 
   return (
     <li className={`${containerBase} ${containerDone}`}>
-      <div className="flex items-center justify-between gap-2">
+      {/* obere Zeile: Text + Buttons -> auf Mobile untereinander, ab sm: nebeneinander */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div className="flex items-center gap-2 flex-1">
           <input
             type="checkbox"
             checked={todo.done}
             onChange={onToggle}
-            className="w-4 h-4 accent-blue-500"
+            className="w-4 h-4 accent-blue-500 flex-shrink-0"
           />
 
           {isEditing ? (
@@ -111,7 +112,8 @@ function TodoItem({ todo, onDelete, onToggle, onUpdate }) {
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        {/* Buttons: auf Handy unter Text, auf größeren Screens rechts in einer Reihe */}
+        <div className="flex flex-wrap gap-2 sm:justify-end">
           {isEditing ? (
             <>
               <button
