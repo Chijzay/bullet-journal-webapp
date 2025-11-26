@@ -132,9 +132,12 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
 
 ```
 
-* Presentation Layer (React SPA)
-* Application Layer (Express Controller und Middleware)
-* Data Layer (Mongoose Modelle und Datenbankzugriff)
+* Frontend: React SPA kommuniziert ausschließlich über REST-API
+* Backend: Express verarbeitet Requests, validiert Token und Daten
+* Authentication: JWTs (stateless, skalierbar)
+* Datenbank: MongoDB Atlas, angebunden via Mongoose
+* Hosting: Netlify (Frontend) und Render (Backend)
+* CI/CD: automatische Deployments über GitHub Push
 
 
 ## Projektstruktur
