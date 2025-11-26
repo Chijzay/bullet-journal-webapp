@@ -9,109 +9,151 @@ function AuthScreen({ onAuthSuccess }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const isLogin = mode === 'login';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
     try {
-      const url =
-        mode === 'login' ? `${API_BASE}/login` : `${API_BASE}/register`;
-
-      const payload =
-        mode === 'login'
-          ? { email, password }
-          : { email, password, username };
-
-      const res = await axios.post(url, payload);
-
-      onAuthSuccess(res.data); // { user, token }
-
-      setEmail('');
-      setPassword('');
-      setUsername('');
+      if (isLogin) {
+        const res = await axios.post(`${API_BASE}/login`, {
+          email,
+          password,
+        });
+        onAuthSuccess(res.data);
+      } else {
+        const res = await axios.post(`${API_BASE}/register`, {
+          email,
+          password,
+          username,
+        });
+        onAuthSuccess(res.data);
+      }
     } catch (err) {
+      console.error(err);
       const msg =
         err.response?.data?.message ||
-        'Etwas ist schiefgelaufen. Versuche es erneut.';
+        err.response?.data?.error ||
+        'Etwas ist schiefgelaufen. Bitte erneut versuchen.';
       setError(msg);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center">
-      <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md space-y-4">
-        <h1 className="text-2xl font-bold text-center">ToDo App</h1>
+    <div className="min-h-screen flex items-center justify-center bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="w-full max-w-md bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 space-y-6">
+        <div className="text-center space-y-1">
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
+            ToDo Webapplikation
+          </h1>
+          <p className="text-sm text-slate-600 dark:text-slate-300">
+            {isLogin
+              ? 'Melde dich an, um deine ToDos zu verwalten.'
+              : 'Erstelle einen Account, um deine ToDos zu speichern.'}
+          </p>
+        </div>
 
-        <div className="flex border rounded-lg overflow-hidden text-sm">
+        <div className="flex rounded-xl bg-slate-100 dark:bg-slate-700 p-1 text-sm">
           <button
-            className={`flex-1 py-2 ${
-              mode === 'login' ? 'bg-blue-500 text-white' : 'bg-white text-gray-700'
-            }`}
+            type="button"
             onClick={() => setMode('login')}
+            className={`flex-1 py-2 rounded-lg transition ${
+              isLogin
+                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 shadow'
+                : 'text-slate-600 dark:text-slate-300'
+            }`}
           >
             Login
           </button>
           <button
-            className={`flex-1 py-2 ${
-              mode === 'register' ? 'bg-blue-500 text-white' : 'bg-white text-gray-700'
-            }`}
+            type="button"
             onClick={() => setMode('register')}
+            className={`flex-1 py-2 rounded-lg transition ${
+              !isLogin
+                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 shadow'
+                : 'text-slate-600 dark:text-slate-300'
+            }`}
           >
             Registrieren
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-3">
-          {mode === 'register' && (
-            <div>
-              <label className="block text-sm text-gray-700 mb-1">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {!isLogin && (
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
                 Benutzername
               </label>
               <input
                 type="text"
-                className="w-full border rounded-lg px-3 py-2 outline-none focus:ring"
+                className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 outline-none focus:ring-2 focus:ring-blue-500/70"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                required={mode === 'register'}
-                minLength={3}
+                required={!isLogin}
+                placeholder="z. B. MaxMustermann"
               />
             </div>
           )}
 
-          <div>
-            <label className="block text-sm text-gray-700 mb-1">E-Mail</label>
+          <div className="space-y-1">
+            <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
+              E-Mail
+            </label>
             <input
               type="email"
-              className="w-full border rounded-lg px-3 py-2 outline-none focus:ring"
+              className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 outline-none focus:ring-2 focus:ring-blue-500/70"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              placeholder="name@example.com"
             />
           </div>
 
-          <div>
-            <label className="block text-sm text-gray-700 mb-1">Passwort</label>
+          <div className="space-y-1">
+            <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
+              Passwort
+            </label>
             <input
               type="password"
-              className="w-full border rounded-lg px-3 py-2 outline-none focus:ring"
+              className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 outline-none focus:ring-2 focus:ring-blue-500/70"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={6}
+              placeholder="Mindestens 6 Zeichen"
             />
           </div>
 
-          {error && <p className="text-sm text-red-500">{error}</p>}
+          {error && (
+            <div className="text-xs text-red-500 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-lg px-3 py-2">
+              {error}
+            </div>
+          )}
 
           <button
             type="submit"
-            className="w-full py-2 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600"
+            disabled={loading}
+            className="w-full mt-2 inline-flex items-center justify-center rounded-lg bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2.5 shadow-sm"
           >
-            {mode === 'login' ? 'Einloggen' : 'Registrieren'}
+            {loading
+              ? 'Bitte warten...'
+              : isLogin
+              ? 'Anmelden'
+              : 'Account erstellen'}
           </button>
         </form>
+
+        <p className="text-[11px] text-center text-slate-500 dark:text-slate-400">
+          Hinweis: Der Dark Mode richtet sich nach der letzten Auswahl im
+          eingeloggten Zustand und wird im Browser gespeichert.
+        </p>
       </div>
     </div>
   );
