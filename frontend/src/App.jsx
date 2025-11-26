@@ -302,13 +302,14 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-900 flex items-center justify-center px-2 sm:px-0">
       <div className="bg-white dark:bg-slate-800 shadow-lg rounded-2xl p-6 w-full max-w-3xl space-y-4 border border-slate-200 dark:border-slate-700">
-        <div className="flex justify-between items-center">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
             ToDo Liste
           </h1>
-          <div className="flex items-center gap-3 text-sm">
+          <div className="flex flex-wrap items-center gap-3 text-sm">
             <span className="text-gray-600 dark:text-gray-300">
               {user.username || user.email}
             </span>
@@ -345,11 +346,11 @@ function App() {
                     : 'bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-slate-600'
                 }`}
               >
-                {value === FILTERS.ALL && 'Alle'}
                 {value === FILTERS.OPEN && 'Offen'}
                 {value === FILTERS.DONE && 'Erledigt'}
                 {value === FILTERS.TODAY && 'Heute'}
                 {value === FILTERS.THIS_WEEK && 'Diese Woche'}
+                {value === FILTERS.ALL && 'Alle'}
               </button>
             ))}
           </div>
