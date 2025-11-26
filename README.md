@@ -102,7 +102,7 @@ Die Anwendung ist eine vollständige **Fullstack Client-Server-Webapplikation**.
 │   ├── vite.config.js
 │   ├── tailwind.config.js
 │   ├── postcss.config.js
-\    └── src/
+\   └── src/
 ```
 
 ## Projekt lokal starten
@@ -147,3 +147,7 @@ Danach Browser öffnen: `http://localhost:5173`
 ### Frontend auf Netlify oder Vercel
 
 ...
+
+## Hinweis
+
+Der Ladevorgang benötigt beim Starten der Webapplikation etwas Zeit.
