@@ -37,7 +37,7 @@ Diese Webapplikation demonstriert eine vollständig implementierte, moderne Full
 * Registrierung und Login über `JWT`-Authentifizierung
 * Sicheres Passwort-Hashing mit `bcrypt`
 * Benutzername wird bei Registrierung vergeben und im UI angezeigt
-* Jeder Benutzer sieht ausschließlich seine eigenen Aufgabe
+* Jeder Benutzer sieht ausschließlich seine eigenen Aufgaben
 * Authentifizierung wird clientseitig persistent und in `localStorage` gespeichert
 
 ### ToDo-Management (CRUD)
