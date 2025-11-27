@@ -15,7 +15,7 @@ Die Webapplikation ist unter folgendem Link erreichbar:
 https://todo-liste-webapp.netlify.app/
 ```
 
-_Hinweis:_ Das Backend (Render) benötigt nach längerer Inaktivität einige Sekunden zum Aufwachen.
+_Hinweis:_ Das Backend läuft auf Render (Free Tier) und wird nach einer Inaktivität von ca. 15 Minuten automatisch in den Sleep-Modus versetzt. Beim ersten Request nach dem Aufwachen dauert der Startvorgang daher typischerweise 20–60 Sekunden, bis der Server wieder verfügbar ist. Während dieser Zeit antwortet auch die Verbindung zu MongoDB Atlas verzögert.
 
 
 ## Projektbeschreibung
