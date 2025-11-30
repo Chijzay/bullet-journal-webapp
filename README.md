@@ -1,7 +1,8 @@
 
-# Fullstack Webentwicklung einer ToDo-Liste
+# Fullstack Webentwicklung eines Bullet Journal
 
-Eine moderne, vollständige Fullstack-Webapplikation zur Verwaltung persönlicher Aufgaben. Das System umfasst Benutzerkonten, Deadlines, Kategorien, Filter- und Sortierfunktionen, Pagination, sowie Light- und Dark-Mode. Alle Daten werden benutzerspezifisch gespeichert und sind jederzeit online auf einer klaren Oberfläche abrufbar.
+Diese Webapplikation demonstriert eine vollständig implementierte, moderne Fullstack-Architektur und verbindet Software-Engineering-Best-Practices mit einer nutzerfreundlichen UI.
+Sie dient als selbst initiiertes Portfolio-Projekt zur Demonstration moderner Fullstack-Entwicklung sowie softwaretechnischer Entscheidungsprozesse und dient als realistische Grundlage für produktionsnahe Webentwicklung. Neben der klassischen Verwaltung persönlicher Aufgaben mit Deadlines, Kategorien, Filter- und Sortierfunktionen, Pagination umfasst die Anwendung zusätzlich ein digitales Journal, welches tägliche Stimmungen, Prioritäten, Dankbarkeitsmomente, Wasseraufnahme und freie Notizen speichert. Damit vereint die Applikation sowohl Produktivität (ToDos) als auch Selbstreflexion (Journal) in einem einzigen System. Alle Daten werden benutzerspezifisch gespeichert und sind jederzeit online abrufbar.
 
 
 ## Live-Demo
@@ -78,6 +79,33 @@ Diese Webapplikation demonstriert eine vollständig implementierte, moderne Full
 * Erledigte Aufgaben werden visuell abgedunkelt
 *	Modernes, schlankes und responsives UI mit Tailwind CSS
 
+### Journal-Funktionen
+
+Das integrierte Journal-Modul ermöglicht eine strukturierte Tagesreflexion und bietet produktive sowie wellbeing-orientierte Funktionen:
+
+*	Datumsauswahl per Kalender
+  -	Einträge pro Tag (YYYY-MM-DD)
+  -	Historische Einträge jederzeit abrufbar
+*	Stimmungstracker
+  -	Auswahl von 5 Mood-Leveln (😢 bis 😄)
+  -	Persistente Tagesstimmung
+* Wasser-Tracker
+  - 0–8 Gläser pro Tag
+  - Visuelle Fortschrittsanzeige per Icons
+* Dankbarkeitsliste (Gratitude)
+  - Bis zu 3 Dinge, die den Tag positiv beeinflusst haben
+* Top-4 Tagesprioritäten
+  - Vier wichtigste Aufgaben des Tages
+  - Ergänzt die ToDo-Liste als Tagesfokus
+* Freitext für Notizen / Reflektion
+  - Offenes Tagebuchfeld
+  - Unterstützt tägliche Einträge und Rückblicke
+* Automatisches Speichern / Laden
+  - Journal-Einträge werden versioniert und benutzerspezifisch in MongoDB gespeichert
+  - Beim Wechsel des Datums werden Einträge automatisch geladen
+
+Dieses Modul erweitert die Anwendung von einer reinen Aufgabenverwaltung hin zu einer vollwertigen Productivity- und Personal-Development-App.
+
 ### Dark Mode
 
 * Umschaltbar zwischen Light und Dark Mode
@@ -111,6 +139,7 @@ Diese Webapplikation demonstriert eine vollständig implementierte, moderne Full
 *	Mongoose ODM
     - `User`: Benutzername, E-Mail, Passwort (gehasht)
     - `Todo`: Text, Status, Kategorie, Deadline, User-Referenz
+    - `JournalEntry`: user, date, gratitude[], bestTasks[], mood, water, notes
 
 
 ## Architekturübersicht
