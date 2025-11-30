@@ -51,12 +51,12 @@ function AuthScreen({ onAuthSuccess }) {
       <div className="w-full max-w-md bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 space-y-6">
         <div className="text-center space-y-1">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-            ToDo Webapplikation
+            ToDo und Journal
           </h1>
           <p className="text-sm text-slate-600 dark:text-slate-300">
             {isLogin
-              ? 'Melde dich an, um deine ToDos zu verwalten.'
-              : 'Erstelle einen Account, um deine ToDos zu speichern.'}
+              ? 'Melde dich an, um deine ToDos und dein Journal zu verwalten.'
+              : 'Erstelle einen Account, um deine ToDos und dein Journal zu speichern.'}
           </p>
         </div>
 
