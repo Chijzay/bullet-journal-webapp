@@ -84,7 +84,7 @@ Diese Webapplikation demonstriert eine vollständig implementierte, moderne Full
 Das integrierte Journal-Modul ermöglicht eine strukturierte Tagesreflexion und bietet produktive sowie wellbeing-orientierte Funktionen:
 
 *	Datumsauswahl per Kalender
-  -	Einträge pro Tag (YYYY-MM-DD)
+  -	Einträge pro Tag (DD-MM-YYYY)
   -	Historische Einträge jederzeit abrufbar
 *	Stimmungstracker
   -	Auswahl von 5 Mood-Leveln (😢 bis 😄)
@@ -97,10 +97,10 @@ Das integrierte Journal-Modul ermöglicht eine strukturierte Tagesreflexion und 
 * Top-4 Tagesprioritäten
   - Vier wichtigste Aufgaben des Tages
   - Ergänzt die ToDo-Liste als Tagesfokus
-* Freitext für Notizen / Reflektion
+* Freitext für Notizen und Reflektion
   - Offenes Tagebuchfeld
   - Unterstützt tägliche Einträge und Rückblicke
-* Automatisches Speichern / Laden
+* Automatisches Speichern und Laden
   - Journal-Einträge werden versioniert und benutzerspezifisch in MongoDB gespeichert
   - Beim Wechsel des Datums werden Einträge automatisch geladen
 
@@ -139,7 +139,7 @@ Dieses Modul erweitert die Anwendung von einer reinen Aufgabenverwaltung hin zu 
 *	Mongoose ODM
     - `User`: Benutzername, E-Mail, Passwort (gehasht)
     - `Todo`: Text, Status, Kategorie, Deadline, User-Referenz
-    - `JournalEntry`: user, date, gratitude[], bestTasks[], mood, water, notes
+    - `JournalEntry`: Benutzer, Datum, Dankbarkeitsliste, Tagespriorität, Stimmungstracker, Wasser-Tracker, Tagesnotizen
 
 
 ## Architekturübersicht
@@ -149,7 +149,9 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
 ```text
 ┌──────────────────────────┐
 │     Frontend (React)     │
-│  - Single Page App       │
+│  - ToDo-Seite            │
+│  - Journal-Seite         │
+│  - Navigation + UIState  │
 │  - Vite, Tailwind, Axios │
 │  - Auth per JWT          │
 └────────────┬─────────────┘
@@ -158,6 +160,7 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
 ┌──────────────────────────┐
 │ Backend (Node + Express) │
 │ - REST API               │
+│ - Routes: ToDo, Journal  │
 │ - Express, Auth, JWT     │
 │ - Auth, Business Logic   │
 └────────────┬─────────────┘
@@ -166,6 +169,9 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
 ┌──────────────────────────┐
 │   MongoDB Atlas Cluster  │
 │ - persistent storage     │
+│ - users                  │
+│ - todos                  │
+│ - journalentries         │
 └──────────────────────────┘
 ```
 
@@ -184,18 +190,29 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
 .
 ├── backend/
 │   ├── middleware/           # Auth Middleware, Error Handling
-│   ├── models/               # User und ToDo Schemas
+│   ├── models/               # Schemas
+│   │   ├── User.js/          # Schema fuer Users
+│   │   ├── Todo.js/          # Schema fuer Aufgaben
+│   │   └── JournalEntry.js/  # Schema fuer Journal Eintraege
 │   ├── routes/               # REST API Endpunkte
+│   │   ├── authRoutes.js/    # Routes fuer Authentifizierung
+│   │   ├── todoRoutes.js/    # Routes fuer Aufgaben
+│   │   └── journalRoutes.js/ # Routes fuer Journal Eintraege
 │   ├── .env                  # Umgebungsvariablen
 │   ├── package.json          # Projektkonfiguration und Abhängigkeiten
 │   └── server.js             # Haupteinstiegspunkt des Backends.
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── components/       # React Kompinenten
+│   │   ├── components/       # React Komponenten
+│   │   │   ├── JournalPage.jsx 
+│   │   │   ├── TodoList.jsx
+│   │   │   ├── TodoItem.jsx
+│   │   │   ├── TodoForm.jsx
+│   │   │   └── AuthScreen.jsx
 │   │   ├── App.jsx           # Hauptkomponente der Webappplikation
 │   │   ├── index.css         # Einbindung der Tailwind-Styles
-│   │   ├── main.jsx          # Einstiegspunkt des Clients
+│   │   └── main.jsx          # Einstiegspunkt des Clients
 │   ├── index.html            # Einstiegspunkt der React-Anwendung.
 │   ├── package.json          # Projektkonfiguration und Abhängigkeiten
 │   ├── postcss.config.js     # Post-CSS Konfiguration für Tailwind
@@ -212,7 +229,6 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
 * Eingabevalidierung im Backend
 * Fehlerbehandlung und Response-Standardisierung
 * Keine sensiblen Daten im Client gespeichert
-
 
 ## Deployment und Hosting
 
@@ -237,7 +253,6 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
   - Jedes GitHub-Push löst auto-Deploy auf Render und Netlify aus
   - Zero-Downtime Deployments
   - Keine lokale Umgebung für Betrieb notwendig und zu 100% Cloud
-
 
 ## Lizenz
 
