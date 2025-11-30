@@ -252,6 +252,7 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
   - Environment Variables:
     - `VITE_API_URL`
     - `VITE_AUTH_API_URL`
+    - `VITE_JOURNAL_API_URL`
 
 * CI/CD:
   - Jedes GitHub-Push löst auto-Deploy auf Render und Netlify aus
