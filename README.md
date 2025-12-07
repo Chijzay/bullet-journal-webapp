@@ -5,7 +5,7 @@ Diese Webapplikation demonstriert eine vollständig implementierte, moderne Full
 Sie dient als selbst initiiertes Portfolio-Projekt zur Demonstration moderner Fullstack-Entwicklung sowie softwaretechnischer Entscheidungsprozesse und dient als realistische Grundlage für produktionsnahe Webentwicklung. Neben der klassischen Verwaltung persönlicher Aufgaben mit Deadlines, Kategorien, Filter- und Sortierfunktionen, Pagination umfasst die Anwendung zusätzlich ein digitales Journal, welches tägliche Stimmungen, Prioritäten, Dankbarkeitsmomente, Wasseraufnahme und freie Notizen speichert. Damit vereint die Applikation sowohl Produktivität (ToDos) als auch Selbstreflexion (Journal) in einem einzigen System. Alle Daten werden benutzerspezifisch gespeichert und sind jederzeit online abrufbar.
 
 
-## Live-Demo
+## Demo
 
 Die Webapplikation ist unter folgendem Link erreichbar:
 
