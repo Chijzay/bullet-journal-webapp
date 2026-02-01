@@ -61,7 +61,7 @@ Diese Webapplikation demonstriert eine vollständig implementierte, moderne Full
 * Filteroptionen:
   - Offen
   - Heute
-  - Diese Woche
+  - Diese Woche 
   - Erledigt
   - Alle
 
