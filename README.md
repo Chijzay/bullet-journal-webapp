@@ -10,8 +10,7 @@ Sie dient als selbst initiiertes Portfolio-Projekt zur Demonstration moderner Fu
 Die Webapplikation ist unter folgendem Link erreichbar:
 
 ```
-
-
+https://chijzay.github.io/bullet-journal-webapp/
 ```
 
 **Hinweis:**
