@@ -10,7 +10,7 @@ Sie dient als selbst initiiertes Portfolio-Projekt zur Demonstration moderner Fu
 Die Webapplikation ist unter folgendem Link erreichbar:
 
 ```
-https://todo-liste-webapp.netlify.app/
+comming soon
 ```
 
 **Hinweis:**
@@ -186,7 +186,7 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
 * `Datenbank:` MongoDB Atlas, angebunden via Mongoose
 
 * Authentication: JWTs (stateless, skalierbar)
-* Hosting: Netlify (Frontend) und Render (Backend)
+* Hosting: GitHub Actions und Pages (Frontend) und Render (Backend)
 * CI/CD: Automatische Deployments über GitHub Push
 
 
@@ -247,8 +247,8 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
     - `JWT_SECRET`
     - `PORT`
 
-* Netlify (Frontend):
-  - Hosted auf Netlify
+* GitHub (Frontend):
+  - Hosted auf GitHub via GitHub Actions und GitHub Pages
   - Build-Prozess mit Vite über `npm run build`
   - Deploy der `dist/`-Dateien
   - Environment Variables:
@@ -257,7 +257,7 @@ Die Anwendung folgt einer klassischen und vollständigen Fullstack `Client-Serve
     - `VITE_JOURNAL_API_URL`
 
 * CI/CD:
-  - Jedes GitHub-Push löst auto-Deploy auf Render und Netlify aus
+  - Jedes GitHub-Push löst auto-Deploy auf Render und GitHub aus
   - Zero-Downtime Deployments
   - Keine lokale Umgebung für Betrieb notwendig und zu 100% Cloud
 
