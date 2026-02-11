@@ -8,6 +8,17 @@ import JournalPage from './components/JournalPage';
 const API_URL =
   import.meta.env.VITE_API_URL || 'http://localhost:5000/api/todos';
 
+axios.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err?.response?.status === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/"; // zurück zum Login/Start
+    }
+    return Promise.reject(err);
+  }
+);
+
 const FILTERS = {
   OPEN: 'OPEN',
   TODAY: 'TODAY',
